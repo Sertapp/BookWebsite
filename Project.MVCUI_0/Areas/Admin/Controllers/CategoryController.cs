@@ -1,0 +1,66 @@
+﻿using Project.BLL.DesignPatterns.GenericRepository.ConcRep;
+using Project.ENTITIES.Models;
+using Project.MVCUI_0.AuthenticationClasses;
+using Project.MVCUI_0.VMClasses;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Project.MVCUI_0.Areas.Admin.Controllers
+{
+    [AdminAuthentication]
+    public class CategoryController : Controller
+    {
+        CategoryRepository _cRep;
+
+        public CategoryController()
+        {
+            _cRep = new CategoryRepository();
+        }
+        // GET: Admin/Category
+        public ActionResult CategoryList(int? id)
+        {
+            CategoryVM cvm = id == null ? new CategoryVM
+            {
+                Categories = _cRep.GetActives()
+            } : new CategoryVM { Categories = _cRep.Where(x => x.ID == id) };
+            return View(cvm);
+        }
+
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCategory(Category category)
+        {
+            _cRep.Add(category);
+            return RedirectToAction("CategoryList");
+        }
+
+        public ActionResult UpdateCategory(int id)
+        {
+            CategoryVM cvm = new CategoryVM
+            {
+                Category = _cRep.Find(id)
+            };
+            return View(cvm);
+        }
+
+        //[HttpPost]
+        //public ActionResult UpdateCategory(Category category)
+        //{
+        //    _cRep.Update(category);
+        //    return RedirectToAction("CategoryList");
+        //}
+
+        public ActionResult DeleteCategory(int id)
+        {
+            _cRep.Delete(_cRep.Find(id));
+            return RedirectToAction("CategoryList");
+        }
+    }
+}

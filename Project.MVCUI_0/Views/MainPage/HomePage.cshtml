@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "HomePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Raw(TempData["msg"])
+<h2>@DateTime.Now.ToShortDateString()</h2>
+<style>
+
+    .genislik {
+        width ="300";
+        height ="250";
+    }
+</style>
+@TempData["odeme"]
+<section class="wrapper">
+    <!-- page start-->
+    <section class="panel">
+        <header class="panel-heading">
+            Image Gallery
+        </header>
+        <div class="panel-body">
+            <div>
+                <img src="~/Pictures/hangisi-en-iyi-kitaplar.jpg" alt="img02" width="400" height="200"><img style="padding-left:30px" src="~/Pictures/hhZEaVS5QMo.jpg" width="400" height="200" />
+                <img style="padding-left:30px" src="~/Pictures/kitapgorsel.jpg" width="400" height="200" /><img style="padding-left:30px" src="~/Pictures/kitaplarladost.jpg" width="400" height="200" />
+
+            </div>
+
+            <div style="padding-top:30px">
+                <img src="~/Pictures/kitaplar.jpeg" width="400" height="200" /><img style="padding-left:30px" src="~/Pictures/kitapdizim.jpg" width="400" height="200" />
+                <img style="padding-left:30px" img src="~/Pictures/kapak.jpg" width="400" height="200" /><img style="padding-left:30px" src="~/Pictures/16252305_247497165692996_4861872889228983326_o.jpg" width="400" height="200" />
+
+            </div>
+        </div>
+</section>
+
+    <!-- page end-->
+</section>

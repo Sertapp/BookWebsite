@@ -1,0 +1,19 @@
+﻿@model AppUserVM
+@{
+    ViewBag.Title = "MailSend";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@ViewBag.info
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.TextBoxFor(x => x.AppUser.Email, new { @placeholder = "Email adresinizi giriniz", @class = "login_input" })
+    </div>
+
+
+    <div class="login_control topPersonal">
+        <button type='submit' class="btn btn-md btn--warning btn--wider">Hesabı siliniz</button>
+    </div>
+}
